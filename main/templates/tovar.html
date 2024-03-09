@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="row justify-content-center my-4">
+      <div class="col-8">
+        <div class="card">
+          <div class="card-header">
+            <h4>{{ tovar.title }}</h4>
+          </div>
+          <div class="card-body">
+               <p><img class="card-title" width="600px" src = "{{ url_for('static', filename=tovar.photo) }}"></img> </p>
+               <h5 class="card-title">Цена:</h5>
+               <h5 class="card-title">{{ tovar.price }} руб. </h5>
+               <h5 class="card-title">Категория:</h5>
+                <a href="{{ url_for('category', category_id=tovar.category.id) }}" class="p-1 mb-1 bg-dark text-white rounded text-decoration-none">{{ tovar.category.name }}</a>
+                <h5 class="card-title">Краткая характеристика:</h5>
+                <p class="card-text">{{ tovar.content }}</p>
+          </div>
+          <div class="card-footer">
+            <a href="{{ url_for('edit', tovar_id=tovar.id) }}" class="btn btn-primary">Редактировать</a>
+            <a href="{{ url_for('delete', tovar_id=tovar.id) }}" class="btn btn-danger">Удалить</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
